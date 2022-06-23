@@ -235,13 +235,19 @@ def get_timeline_post():
         ]
     }
 
-@app.route('/api/timeline_post', methods=[ 'POST' ])
-def post_time_line_post():
-    name = request. form['name' ]
-    email = request. form['email']
-    content = request. form['content']
+@app.route('/api/timeline_post', methods=['POST'])
+def post_timeline_post():
+    name = request.form['name']
+    email = request.form['email']
+    content = request.form['content']
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
     return model_to_dict(timeline_post)
+
+@app.route('/api/timeline_post/<int:id>', methods=['DELETE'])
+def delete_timeline_post(id):
+    TimelinePost.delete_by_id(id)
+    return 'Success!'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
