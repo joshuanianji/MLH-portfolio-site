@@ -32,7 +32,8 @@
             "work": 1,
             "education": 2,
             "hobbies": 3,
-            "where_am_i": 4
+            "where_am_i": 4,
+            "timeline": 5,
         };
         // this function returns an event handler
         const animateOut = (node, currPage, nextPage, e) => {
@@ -71,7 +72,7 @@
 
   <body>
   <!-- play animations if it is the initial page load -->
-  <div class="flex space-x-2 mt-12 justify-center {{ 'animate__animated animate__fadeInUp' if initial }}">
+  <div class="flex space-x-2 mt-12 justify-center {{ 'animate__animated animate__fadeInUp' if initial and animations }}">
       <div>
           <button type="button" onClick="location.href='/set/{{ 'dark' if theme == 'light' or not theme else 'light' }}';" class="inline-block rounded-full leading-normal shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-14 h-14 {{ 'bg-black text-white hover:bg-slate-800 focus:bg-slate-800 active:bg-slate-700' if theme == 'light' or not theme else  'bg-white text-black hover:bg-slate-50 focus:bg-slate-50 active:bg-slate-100' }}">
               <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download"
@@ -83,13 +84,13 @@
       </div>
   </div>
   <div class="profile">
-      <div class="profile-picture {{ 'animate__animated animate__fadeInUp' if initial }}">
+      <div class="profile-picture {{ 'animate__animated animate__fadeInUp' if initial and animations }}">
           <img src="./static/img/logo.jpg" />
       </div>
       <div class="profile-description">
-          <h1 class="profile-name {{ 'animate__animated animate__fadeInUp animate__delay-1s' if initial }}">{{ name }}</h1>
-          <p class="profile-position {{ 'animate__animated animate__fadeInUp animate__delay-2s' if initial }}">{{ position }}</p>
-          <div class="socials {{ 'animate__animated animate__fadeInUp animate__delay-3s' if initial }}">
+          <h1 class="profile-name {{ 'animate__animated animate__fadeInUp animate__delay-1s' if initial and animations }}">{{ name }}</h1>
+          <p class="profile-position {{ 'animate__animated animate__fadeInUp animate__delay-2s' if initial and animations }}">{{ position }}</p>
+          <div class="socials {{ 'animate__animated animate__fadeInUp animate__delay-3s' if initial and animations }}">
           {% for social in socials %}
           <a class="socials-link" href="{{social.url}}" target="_blank">
             <img src="{{social.icon}}" alt="{{social.name}}" />
@@ -98,19 +99,20 @@
         </div>
       </div>
     </div>
-    <div class="nav-bar-wrapper {{ 'animate__animated animate__fadeInUp animate__delay-4s' if initial }}">
+    <div class="nav-bar-wrapper {{ 'animate__animated animate__fadeInUp animate__delay-4s' if initial and animations }}">
       <div class="nav-bar">
         <a class="nav-item {{'active' if active_tab == 'about'}}" onclick="animateOut(this, '{{ active_tab }}', 'about', event)" href="/about">About</a>
         <a class="nav-item {{'active' if active_tab == 'work' }}" onclick="animateOut(this, '{{ active_tab }}', 'work', event)" href="/work">Work</a>
         <a class="nav-item {{'active' if active_tab == 'education' }}" onclick="animateOut(this, '{{ active_tab }}', 'education', event)" href="/education">Education</a>
         <a class="nav-item {{'active' if active_tab == 'hobbies' }}" onclick="animateOut(this, '{{ active_tab }}', 'hobbies', event)" href="/hobbies">Hobbies</a >
         <a class="nav-item {{'active' if active_tab == 'where_am_i' }}" onclick="animateOut(this, '{{ active_tab }}', 'where_am_i', event)" href="/where_am_i">Where Am I?</a>
+        <a class="nav-item {{'active' if active_tab == 'timeline' }}" onclick="animateOut(this, '{{ active_tab }}', 'timeline', event)" href="/timeline">Timeline</a>
       </div>
     </div>
     <div
         class="content-wrapper
-            {{ 'animate__animated animate__fadeInUp animate__delay-5s' if initial }}
-            {{ 'animate__animated animate__faster ' ~ content_slide_animation if content_slide_animation is not none }}">
+            {{ 'animate__animated animate__fadeInUp animate__delay-5s' if initial and animations }}
+            {{ 'animate__animated animate__faster ' ~ content_slide_animation if content_slide_animation is not none and animations }}">
         {% block content %}{% endblock %}
     </div>
     <footer>

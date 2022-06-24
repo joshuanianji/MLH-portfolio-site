@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    //"*.html": "jinja-html"
+    "*.html": "jinja-html"
   },
   "python.defaultInterpreterPath": ".venv/bin/python"
 }

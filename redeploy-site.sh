@@ -6,7 +6,7 @@ echo "Python venv stuff"
 source python3-virtualenv/bin/activate
 pip install -r requirements.txt
 echo "tmux..."
-tmux new-session -d -s flask-portfolio 'flask run --host=0.0.0.0'
+tmux new-session -d -s flask-portfolio 'yarn dev-server'
 echo "deactivating python shell"
 deactivate
 echo "Finished!" 
