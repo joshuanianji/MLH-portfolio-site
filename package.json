@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dev-server": ".venv/bin/flask run --no-debugger"
+    "dev-server": ".venv/bin/flask run --no-debugger --host=0.0.0.0"
   },
   "dependencies": {
     "next": "12.1.6",
