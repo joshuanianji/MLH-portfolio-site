@@ -1,5 +1,5 @@
 import os
-from flask import Flask, make_response, render_template, request, redirect, url_for
+from flask import Flask, make_response, render_template, request, redirect, url_for, jsonify
 from dotenv import load_dotenv
 from peewee import *
 import datetime
@@ -8,12 +8,15 @@ from playhouse.shortcuts import model_to_dict
 load_dotenv()
 app = Flask(__name__)
 
-mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
-                        user=os.getenv("MYSQL_USER"),
-                        password=os.getenv("MYSQL_PASSWORD"),
-                        host=os.getenv("MYSQL_HOST"),
-                        port=3306)
-
+if os.getenv("TESTING") == "true":
+    print("Running in test mode")
+    mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+else:
+    mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+                         user=os.getenv("MYSQL_USER"),
+                         password=os.getenv("MYSQL_PASSWORD"),
+                         host=os.getenv("MYSQL_HOST"),
+                         port=3306)
 print(mydb)
 
 
@@ -283,6 +286,14 @@ def get_timeline_post():
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_timeline_post():
+
+    if 'name' not in request.form:
+        return jsonify({"error": "Missing name"}), 400
+    if 'email' not in request.form or "@" not in request.form["email"]:
+        return jsonify({"error": "Missing email or invalid email"}), 400
+    if 'content' not in request.form or request.form['content'] == '':
+        return jsonify({"error": "Missing content"}), 400
+
     name = request.form['name']
     email = request.form['email']
     content = request.form['content']
@@ -300,4 +311,6 @@ def delete_timeline_post(id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    mydb.connect()
+    mydb.create_tables([TimelinePost])
+    app.run()
