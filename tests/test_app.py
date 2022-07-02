@@ -31,7 +31,6 @@ class AppTestCase(unittest.TestCase):
 
     def test_timeline(self):
         response = self.client.get("/timeline")
-        # assert we are redirected to the correct url
         assert response.status_code == 200
         html = response.get_data(as_text=True)
         assert "Timeline - Portfolio" in html
