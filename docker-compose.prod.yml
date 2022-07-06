@@ -2,7 +2,9 @@ version: "3"
 services:
   myportfolio:
     container_name: myportfolio
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.prod
     restart: always 
     env_file: 
       - .env 
