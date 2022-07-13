@@ -17,7 +17,12 @@
 
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
-	"workspaceFolder": "/workspace"
+	"workspaceFolder": "/workspace",
+
+    // disable commit signing inside this devcontainer (for now)
+    "settings": {
+        "git.enableCommitSigning": false
+    }
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
