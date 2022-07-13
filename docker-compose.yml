@@ -13,7 +13,7 @@ services:
     ports: 
       - "5000:5000"
     volumes:
-      - ./api:/myportfolio 
+      - .:/myportfolio 
     depends_on:
       - mysql
 
