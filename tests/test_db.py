@@ -1,14 +1,12 @@
 import unittest
 from peewee import *
-from api import TimelinePost
+from app import TimelinePost
 
 MODELS = [TimelinePost]
 
-test_db = SqliteDatabase(":memory")
-
+test_db = SqliteDatabase(":test_db")
 
 class TestTimelinePost(unittest.TestCase):
-
     def setup(self):
         test_db.bind(MODELS, bind_refs=False, bind_backrefs=False)
         test_db.connect()

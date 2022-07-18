@@ -1,3 +1,4 @@
 #!/bin/bash
 
-$PWD/.venv/bin/python -m unittest discover -v tests/
+docker-compose -f docker-compose.yml run myportfolio python -m unittest -v tests.test_db
+docker-compose -f docker-compose.yml run myportfolio python -m unittest -v tests.test_app
