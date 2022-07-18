@@ -1,0 +1,23 @@
+name: Run Tets
+
+on: 
+  push: 
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env: 
+      TESTING: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+        # My tests are using docker so I can skip setting up Python
+      - name: Run Tests
+        run: ./run_test.sh
