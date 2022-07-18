@@ -21,8 +21,16 @@
 
     // disable commit signing inside this devcontainer (for now)
     "settings": {
-        "git.enableCommitSigning": false
-    }
+        "git.enableCommitSigning": false,
+        "files.associations": {
+            "*.html": "jinja-html"
+        }
+    },
+
+    "extensions": [
+        "ms-python.python",
+        "samuelcolvin.jinjahtml"
+    ]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
