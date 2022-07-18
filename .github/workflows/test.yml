@@ -17,6 +17,14 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+
+        # In this step, this action saves a list of existing images,
+        # the cache is created without them in the post run.
+        # It also restores the cache if it exists.
+      - name: Cache Docker
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        # Ignore the failure of a step and avoid terminating the job.
+        continue-on-error: true
       
         # Since I don't care about security, my environment files can be the default values in example.env
       - name: Copy environments
