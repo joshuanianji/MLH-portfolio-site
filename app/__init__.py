@@ -65,8 +65,8 @@ def about():
     content = {
         **base_content,
         'quote':
-        'Only one who devotes himself to a cause with his whole strength and soul can be a true master. For this reason mastery demands all of a person.',
-        'author': 'Albert Einstein',
+        'A platypus? PERRY THE PLATYPUS?',
+        'author': 'Dr. Heinz Doofenshmirtz',
     }
     return handle_route('About', 'about', content)
 
