@@ -1,3 +1,4 @@
 #!/bin/bash
 
-$PWD/.venv/bin/python -m unittest discover -v tests/
+python -m unittest -v tests.test_db
+python -m unittest -v tests.test_app

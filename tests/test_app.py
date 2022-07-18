@@ -1,7 +1,7 @@
 import unittest
 import os
 from peewee import OperationalError
-from api import mydb as db, app, TimelinePost
+from app import mydb as db, app, TimelinePost
 
 os.environ['TESTING'] = 'true'
 
@@ -15,7 +15,8 @@ class AppTestCase(unittest.TestCase):
             self.client = app.test_client()
             db.connect()
             db.create_tables([TimelinePost])
-        except OperationalError:
+        except OperationalError as e:
+            print('Test app operational error!', e)
             self.client = app.test_client()
 
     def tearDown(self):
