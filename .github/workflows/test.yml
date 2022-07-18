@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+      
+        # Since I don't care about security, my environment files can be the default values in example.env
+      - name: Copy environments
+        run: cp example.env .env
 
         # My tests are using docker so I can skip setting up Python
       - name: Run Tests
