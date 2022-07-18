@@ -27,6 +27,10 @@
         }
     },
 
+    // keep in background!
+    // I run this on my oracle VPS, so theoretically this should also reduce the uptime when I'm connecting
+    "shutdownAction": "none",
+
     "extensions": [
         "ms-python.python",
         "samuelcolvin.jinjahtml"
