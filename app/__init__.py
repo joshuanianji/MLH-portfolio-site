@@ -12,6 +12,7 @@ if os.getenv("TESTING") == "true":
     print('Running in test mode...')
     mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
 else:
+    print('Not running in test mode')
     mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
                          user=os.getenv("MYSQL_USER"),
                          password=os.getenv("MYSQL_PASSWORD"),
@@ -29,9 +30,6 @@ class TimelinePost(Model):
     class Meta:
         database = mydb
 
-
-mydb.connect()
-mydb.create_tables([TimelinePost])
 
 # Base content all pages need
 # used by the "profile" section of the template
