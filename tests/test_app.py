@@ -1,23 +1,18 @@
-import unittest
 import os
-from peewee import OperationalError
-from app import mydb as db, app, TimelinePost
-
 os.environ['TESTING'] = 'true'
 
-timeline_endpoint = "/api/timeline_post"
+import unittest
+from app import mydb as db, app, TimelinePost
 
+
+timeline_endpoint = "/api/timeline_post"
 
 class AppTestCase(unittest.TestCase):
 
     def setUp(self):
-        try:
-            self.client = app.test_client()
-            db.connect()
-            db.create_tables([TimelinePost])
-        except OperationalError as e:
-            print('Test app operational error!', e)
-            self.client = app.test_client()
+        self.client = app.test_client()
+        db.connect()
+        db.create_tables([TimelinePost])
 
     def tearDown(self):
         db.drop_tables([TimelinePost])
