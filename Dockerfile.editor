@@ -1,0 +1,10 @@
+FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:16
+
+WORKDIR workspace/
+
+COPY package-lock.json package.json .
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
