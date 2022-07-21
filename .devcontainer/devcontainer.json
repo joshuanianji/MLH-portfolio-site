@@ -21,7 +21,10 @@
 
     // disable commit signing inside this devcontainer (for now)
     "settings": {
-        "git.enableCommitSigning": false
+        "git.enableCommitSigning": false,
+
+        // use prettier for all formatting
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 
     // keep in background!
@@ -46,6 +49,7 @@
         "prisma.prisma",
         "bradlc.vscode-tailwindcss",
         "irongeek.vscode-env",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
     ]
 }
