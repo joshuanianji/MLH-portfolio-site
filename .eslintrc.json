@@ -1,3 +1,8 @@
 {
-  "extends": ["next/core-web-vitals"]
+    "extends": ["next/core-web-vitals"],
+    "rules": {
+        // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unescaped-entities.md
+        // supposed to prevent silly mistakes, but it's preventing me from using apostrophes in text lol
+        "react/no-unescaped-entities": 0
+    }
 }
