@@ -293,7 +293,7 @@ def delete_timeline_post(id):
     return 'Success!'
 
 
-if __name__ == '__main__':
+if os.getenv("TESTING") != "true":
     mydb.connect()
     mydb.create_tables([TimelinePost])
     app.run()
