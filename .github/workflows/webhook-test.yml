@@ -17,8 +17,7 @@ jobs:
       - name: Send webhook
         env:
           TITLE: '🚀 Deployment Successful!'
-          DESCRIPTION: '${{ github.event.head_commit.message }}\n\n**Commit Hash:** ${{ github.sha }}'
-          USERNAME: 'MLH Portfolio Site CI'
+          DESCRIPTION: '**Commit:** ${{ github.event.head_commit.message }}\n\n**Commit Hash:** ${{ github.sha }}'
           URL: 'https://github.com/joshuanianji/MLH-portfolio-site/commit/${{ github.sha }}'
         # The backslashes around double quotes are annoying but if I use single quotes, discord will say the JSON is invalid for some reason
         run: |
