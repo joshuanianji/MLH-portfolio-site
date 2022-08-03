@@ -28,7 +28,7 @@
     <script>
         // orders the page names
         const pages = { 
-            "about": 0,
+            "home": 0,
             "work": 1,
             "education": 2,
             "hobbies": 3,
@@ -101,7 +101,7 @@
     </div>
     <div class="nav-bar-wrapper {{ 'animate__animated animate__fadeInUp animate__delay-4s' if initial and animations }}">
       <div class="nav-bar">
-        <a class="nav-item {{'active' if active_tab == 'about'}}" onclick="animateOut(this, '{{ active_tab }}', 'about', event)" href="/about">About</a>
+        <a class="nav-item {{'active' if active_tab == 'home'}}" onclick="animateOut(this, '{{ active_tab }}', 'home', event)" href="/">Home</a>
         <a class="nav-item {{'active' if active_tab == 'work' }}" onclick="animateOut(this, '{{ active_tab }}', 'work', event)" href="/work">Work</a>
         <a class="nav-item {{'active' if active_tab == 'education' }}" onclick="animateOut(this, '{{ active_tab }}', 'education', event)" href="/education">Education</a>
         <a class="nav-item {{'active' if active_tab == 'hobbies' }}" onclick="animateOut(this, '{{ active_tab }}', 'hobbies', event)" href="/hobbies">Hobbies</a >

@@ -53,20 +53,13 @@ base_content = {
 
 
 @app.route('/')
-def index():
-    # no extra content needed
-    # title and active_tab handled by `handle_route`
-    return handle_route('Home', 'index', base_content)
-
-
-@app.route('/about')
-def about():
+def home():
     content = {
         **base_content,
         'quote': 'A platypus? PERRY THE PLATYPUS?',
         'author': 'Dr. Heinz Doofenshmirtz',
     }
-    return handle_route('About', 'about', content)
+    return handle_route('Home', 'home', content)
 
 
 @app.route('/work')
@@ -220,6 +213,9 @@ def handle_route(name: str, id: str, content):
     print('animations:', animations)
     # check prev_page cookie to see what animations we have to do
     prev_page = request.cookies.get('prev_page', None, type=str)
+    if prev_page == 'about':
+        # change cookie to home
+        prev_page = 'home'
     print(f'prev_page for {id}: {prev_page}')
 
     if animations == 'false':
@@ -250,16 +246,14 @@ def handle_route(name: str, id: str, content):
 # either a `animate__slideInLeft` or `animate__slideInRight`
 def get_animation(prev_page: str, curr_page: str) -> str:
     pages = {
-        'index': 0,
-        'about': 1,
+        'home': 1,
         'work': 2,
         'education': 3,
         'hobbies': 4,
         'where_am_i': 5,
         'timeline': 6
     }
-    anim = 'slideInRight' if pages[prev_page] < pages[
-        curr_page] else 'slideInLeft'
+    anim = 'slideInRight' if pages[prev_page] < pages[curr_page] else 'slideInLeft'
     return f'animate__{anim}'
 
 
