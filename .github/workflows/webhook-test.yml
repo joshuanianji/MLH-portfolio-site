@@ -17,7 +17,7 @@ jobs:
             -d '{ "embeds": [{ 
                 "title": "🚀 Deployment Successful!", 
                 "description": "${{ github.event.head_commit.message }}",
-                "image": "https://cataas.com/cat"
+                "image": "https://cataas.com/cat",
                 "footer": {
                   "text": "*Deployed at ${{ github.event.head_commit.timestamp }}*"
                 }
