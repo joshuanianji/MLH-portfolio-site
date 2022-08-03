@@ -70,6 +70,10 @@ body {
     text-decoration: none;
 }
 
+.nav-bar > .nav-item:hover {
+    background-color: #0c151d87;
+}
+
 .nav-bar > .nav-item.active {
     background-color: #0c151d;
 }
