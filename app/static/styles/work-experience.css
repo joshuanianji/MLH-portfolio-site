@@ -1,6 +1,6 @@
-h3.content-title {
-    --primary-color: #248c60;
-    --secondary-color: #1a9be6;
+.content-title {
+    --primary-color: #ffa343;
+    --secondary-color: #fdfc74;
 }
 
 .content-wrapper {

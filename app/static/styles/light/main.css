@@ -30,7 +30,7 @@ body {
 
 /* Title stuff */
 
-h3.content-title {
+.content-title {
     --primary-color: #4568dc;
     --secondary-color: #b06ab3;
     font-weight: 800;

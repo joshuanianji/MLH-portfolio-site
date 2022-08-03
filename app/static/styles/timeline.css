@@ -1,3 +1,8 @@
+.content-title {
+    --primary-color: #7442c8;
+    --secondary-color: #fb7efd;
+}
+
 .content-wrapper {
     display: flex;
     width: 100%;
