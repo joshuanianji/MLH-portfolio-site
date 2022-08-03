@@ -6,82 +6,83 @@ h4,
 h5,
 h6,
 button {
-  font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* All animate.css delay classes will take a quarter of the time to start */
 :root {
-  --animate-delay: 0.25s;
-  color: #f1f2f4;
+    --animate-delay: 0.25s;
+    color: #f1f2f4;
 }
 
 body {
-  background-color: #0c151d;
-  background-size: cover;
-  width: auto;
-  overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
-  margin: 0px;
+    background-color: #0c151d;
+    background-size: cover;
+    width: auto;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
 }
 
 /* Title stuff */
 
 h3.content-title {
-  --primary-color: #4568dc;
-  --secondary-color: #b06ab3;
-  font-weight: 800;
-  font-size: calc(4vw + 4vh);
-  letter-spacing: -0.2rem;
-  margin: 50px 0 30px;
-  background: linear-gradient(
-    45deg,
-    var(--primary-color) 32.5%,
-    var(--secondary-color) 50.5%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1em;
-  padding-bottom: 20px;
-  text-align: center;
+    --primary-color: #4568dc;
+    --secondary-color: #b06ab3;
+    font-weight: 800;
+    font-size: calc(4vw + 4vh);
+    letter-spacing: -0.2rem;
+    margin: 50px 0 30px;
+    background: linear-gradient(
+        45deg,
+        var(--primary-color) 32.5%,
+        var(--secondary-color) 50.5%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1em;
+    padding-bottom: 20px;
+    text-align: center;
 }
 
 /* navbar */
 
 .nav-bar-wrapper {
-  margin-top: 4em;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: center;
+    margin-top: 4em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
 }
 
 .nav-bar {
-  display: flex;
-  flex-direction: row;
-  padding: 0.75em;
-  background-color: #171f26;
-  border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    padding: 0.75em;
+    background-color: #171f26;
+    border-radius: 1em;
 }
 
 .nav-bar > .nav-item {
-  border-radius: 0.5em;
-  padding: 1em 1.75em;
-  color: #a3abb2;
-  text-decoration: none;
+    border-radius: 0.5em;
+    padding: 1em 1.75em;
+    color: #a3abb2;
+    text-decoration: none;
 }
 
 .nav-bar > .nav-item.active {
-  background-color: #0c151d;
+    background-color: #0c151d;
 }
 
 footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: #575757;
-  text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #575757;
+    text-align: center;
 }
 
-p, li {
-  color: white;
+p,
+li {
+    color: white;
 }

@@ -1,52 +1,52 @@
 h3.content-header-title {
-  --primary-color: #d8b5ff;
-  --secondary-color: #1eae98;
-  font-weight: 800;
-  font-size: calc(4vw + 4vh);
-  letter-spacing: -0.2rem;
-  margin: 50px 0 0px;
-  background: linear-gradient(
-    45deg,
-    var(--primary-color) 32.5%,
-    var(--secondary-color) 50.5%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1em;
-  padding-bottom: 20px;
+    --primary-color: #d8b5ff;
+    --secondary-color: #1eae98;
+    font-weight: 800;
+    font-size: calc(4vw + 4vh);
+    letter-spacing: -0.2rem;
+    margin: 50px 0 0px;
+    background: linear-gradient(
+        45deg,
+        var(--primary-color) 32.5%,
+        var(--secondary-color) 50.5%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1em;
+    padding-bottom: 20px;
 }
 
 h4.subheading {
-  --primary-color: #d8b5ff;
-  --secondary-color: #1eae98;
-  font-size: calc(2vw + 2vh);
-  background: linear-gradient(
-    45deg,
-    var(--primary-color) 32.5%,
-    var(--secondary-color) 50.5%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
+    --primary-color: #d8b5ff;
+    --secondary-color: #1eae98;
+    font-size: calc(2vw + 2vh);
+    background: linear-gradient(
+        45deg,
+        var(--primary-color) 32.5%,
+        var(--secondary-color) 50.5%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
 }
 
 p {
-  text-align: center;
+    text-align: center;
 }
 
 .box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #map {
-  height: 600px;
-  width: 700px;
-  border-radius: 2em;
+    height: 600px;
+    width: 700px;
+    border-radius: 2em;
 }
 
 ul {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }

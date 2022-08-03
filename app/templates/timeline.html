@@ -8,65 +8,65 @@
 it #}
 
 <script>
-  window.onload = () => {
-    const form = document.getElementById("form");
+    window.onload = () => {
+        const form = document.getElementById('form');
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const payload = new FormData(form);
-      console.log("Sending data...");
-      fetch("/api/timeline_post", {
-        method: "POST",
-        body: payload,
-      }).then((data) => {
-        noAnim();
-        location.reload();
-      });
-    });
-  };
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const payload = new FormData(form);
+            console.log('Sending data...');
+            fetch('/api/timeline_post', {
+                method: 'POST',
+                body: payload,
+            }).then((data) => {
+                noAnim();
+                location.reload();
+            });
+        });
+    };
 
-  const deletePost = (id) => {
-    console.log("Deleting post with id: " + id);
-    fetch("/api/timeline_post/" + id, {
-      method: "DELETE",
-    }).then((data) => {
-      noAnim();
-      location.reload();
-    });
-  };
+    const deletePost = (id) => {
+        console.log('Deleting post with id: ' + id);
+        fetch('/api/timeline_post/' + id, {
+            method: 'DELETE',
+        }).then((data) => {
+            noAnim();
+            location.reload();
+        });
+    };
 
-  const noAnim = () => {
-    // https://stackoverflow.com/a/28607957
-    document.cookie = "animations=false";
-    console.log(document.cookie);
-  };
+    const noAnim = () => {
+        // https://stackoverflow.com/a/28607957
+        document.cookie = 'animations=false';
+        console.log(document.cookie);
+    };
 </script>
 {% endblock %}
 
 <!-- Add content here -->
 {% block content %}
 <form method="post" id="form" class="form">
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" value="" />
-  <label for="email">Email:</label>
-  <input type="text" id="email" name="email" value="" />
-  <label for="content">Content:</label>
-  <input type="text" id="content" name="content" value="" />
-  <input type="submit" value="Submit" />
-  <br />
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="" />
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" value="" />
+    <label for="content">Content:</label>
+    <input type="text" id="content" name="content" value="" />
+    <input type="submit" value="Submit" />
+    <br />
 </form>
 
 <ul class="timeline-wrapper">
-  {% for timeline in timeline_posts %}
-  <li class="timeline-item">
-    <div class="name">{{ timeline.name }}</div>
-    <h4 class="email">{{ timeline.email }}</h4>
-    <p class="content">{{ timeline.content }}</p>
-    <p class="createdAt">{{ timeline.createdAt }}</p>
-    <button class="delete" onclick="deletePost({{ timeline.id }})">
-      Delete
-    </button>
-  </li>
-  {% endfor %}
+    {% for timeline in timeline_posts %}
+    <li class="timeline-item">
+        <div class="name">{{ timeline.name }}</div>
+        <h4 class="email">{{ timeline.email }}</h4>
+        <p class="content">{{ timeline.content }}</p>
+        <p class="createdAt">{{ timeline.createdAt }}</p>
+        <button class="delete" onclick="deletePost({{ timeline.id }})">
+            Delete
+        </button>
+    </li>
+    {% endfor %}
 </ul>
 {% endblock %}
