@@ -37,7 +37,7 @@ base_content = {
     'name':
     'Joshua Ji',
     'position':
-    'Aspiring Software Engineer',
+    'Aspiring Software Developer',
     'url':
     os.getenv("URL"),
     'socials': [{
