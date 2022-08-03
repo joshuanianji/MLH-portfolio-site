@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # https://stackoverflow.com/a/64649397
-    - name: Dynamically set $DATE
-      run: echo "DATE=$(date +'%Y-%m-%dT%H:%M:%S.000Z')" >> $GITHUB_ENV
+      - name: Dynamically set $DATE
+        run: echo "DATE=$(date +'%Y-%m-%dT%H:%M:%S.000Z')" >> $GITHUB_ENV
 
       - name: Send webhook
         env:
-          TITLE: "🚀 Deployment Successful!"
-          DESCRIPTION: "${{ github.event.head_commit.message }}"
+          TITLE: '🚀 Deployment Successful!'
+          DESCRIPTION: '${{ github.event.head_commit.message }}'
         run: |
           curl \
             -H "Content-Type: application/json" \
