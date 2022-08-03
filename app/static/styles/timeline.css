@@ -21,6 +21,10 @@
     gap: 0.5em;
 }
 
+.form input {
+    color: black;
+}
+
 .timeline-wrapper {
     display: flex;
     width: 100%;
