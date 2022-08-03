@@ -1,22 +1,22 @@
 .content-title {
-  --primary-color: #4568dc;
-  --secondary-color: #b06ab3;
-  font-weight: 800;
-  font-size: calc(4vw + 4vh);
-  letter-spacing: -0.2rem;
-  margin: 50px 0 30px;
-  background: linear-gradient(
-    45deg,
-    var(--primary-color) 32.5%,
-    var(--secondary-color) 50.5%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1em;
-  padding-bottom: 20px;
+    --primary-color: #4568dc;
+    --secondary-color: #b06ab3;
+    font-weight: 800;
+    font-size: calc(4vw + 4vh);
+    letter-spacing: -0.2rem;
+    margin: 50px 0 30px;
+    background: linear-gradient(
+        45deg,
+        var(--primary-color) 32.5%,
+        var(--secondary-color) 50.5%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1em;
+    padding-bottom: 20px;
 }
 
 p {
-  text-align: center;
-  font-style: italic;
+    text-align: center;
+    font-style: italic;
 }

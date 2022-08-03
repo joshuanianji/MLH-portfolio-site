@@ -66,23 +66,15 @@ def home():
 def work():
     content = {
         **base_content, 'jobs': [{
-            'name':
-            'Theoretical physicist',
-            'location':
-            'Mars',
-            'contact':
-            '1 (202) 358-0001',
-            'description':
-            'They wanted someone with a degree in theoretical physics and I said I have a theoretical physic degree and they let me in.'
+            'name': 'Theoretical physicist',
+            'location': 'Mars',
+            'contact': '1 (202) 358-0001',
+            'description': 'They wanted someone with a degree in theoretical physics and I said I have a theoretical physic degree and they let me in.'
         }, {
-            'name':
-            'Computer programmer',
-            'location':
-            'Memory Lane',
-            'contact':
-            '127.255.255.255',
-            'description':
-            'Today I walked down a street where many computer programmers live. The houses were numbered 64k, 128k, 256k, 512k and 1MB. For some reason it felt like a trip down memory lane.'
+            'name': 'Computer programmer',
+            'location': 'Memory Lane',
+            'contact': '127.255.255.255',
+            'description': 'Today I walked down a street where many computer programmers live. The houses were numbered 64k, 128k, 256k, 512k and 1MB. For some reason it felt like a trip down memory lane.'
         }]
     }
     return handle_route('Work Experiences', 'work', content)
