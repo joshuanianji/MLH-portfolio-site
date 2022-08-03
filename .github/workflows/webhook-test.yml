@@ -10,6 +10,10 @@ jobs:
     name: 'Webhook'
     runs-on: ubuntu-latest
     steps:
+      # https://stackoverflow.com/a/64649397
+    - name: Dynamically set $DATE
+      run: echo "DATE=2020-10-07T12:00:00+01:00" >> $GITHUB_ENV
+
       - name: Send webhook
         env:
           TITLE: '🚀 Deployment Successful!'
@@ -21,5 +25,5 @@ jobs:
         run: |
           curl \
             -H "Content-Type: application/json" \
-            -d '{ "embeds": [{ "title": "${{ env.TITLE }}", "description": "${{ env.DESCRIPTION }}", "image": "${{ env.IMG }}" }]}' \
+            -d '{ "embeds": [{ "title": "${{ env.TITLE }}", "description": "${{ env.DESCRIPTION }}" }]}' \
             "${{ secrets.DISCORD_WEBHOOK }}"
