@@ -11,13 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send webhook
+        env:
+          TITLE: '🚀 Deployment Successful!'
+          DESCRIPTION: '${{ github.event.head_commit.message }}'
+          IMG: 'https://cataas.com/cat'
+          # formatted based on https://birdie0.github.io/discord-webhooks-guide/structure/embed/timestamp.html
+          # milliseconds are set to 0
+          TIMESTAMP: date +'%Y-%m-%dT%H:%M:%S.000Z'
         run: |
           curl \
             -H "Content-Type: application/json" \
-            -d '{ "embeds": [{                                                                      \
-                "title": "🚀 Deployment Successful!",                                               \
-                "description": "${{ github.event.head_commit.message }}",                           \
-                "image": "https://cataas.com/cat",                                                  \
-                "footer": { "text": "*Deployed at ${{ github.event.head_commit.timestamp }}*" }    \
-              }]}' \
+            -d '{ "embeds": [{ "title": "${TITLE}", "description": "${DESCRIPTION}", "image": "${IMAGE}", "footer": "${FOOTER}" }]}' \
             "${{ secrets.DISCORD_WEBHOOK }}"
