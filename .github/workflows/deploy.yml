@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Configure SSH
+      - name: 💻 Configure SSH
         run: |
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy-key.pem
@@ -32,12 +32,26 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_IP: ${{ secrets.SSH_IP }}
-      - name: Deploy site
+
+      - name: 🚀 Deploy site
         run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && ./redeploy-site.sh'
 
-      - name: Send Deployment Message on Success
-        run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful for commit ${{ github.sha }}!"
+      # https://stackoverflow.com/a/64649397
+      - name: 📅 Dynamically set $DATE
+        run: echo "DATE=$(date +'%Y-%m-%dT%H:%M:%S.000Z')" >> $GITHUB_ENV
 
-      - name: Send Deployment Message on Failure
+      - name: 💚 Send Deployment Message on Success
+        env:
+          TITLE: '🚀 Deployment Successful!'
+          DESCRIPTION: '**Commit:** ${{ github.event.head_commit.message }}\n\n**Commit Hash:** ${{ github.sha }}'
+          URL: 'https://github.com/joshuanianji/MLH-portfolio-site/commit/${{ github.sha }}'
+        # The backslashes around double quotes are annoying but if I use single quotes, discord will say the JSON is invalid for some reason
+        run: |
+          curl \
+            -H "Content-Type: application/json" \
+            -d "{ \"embeds\": [{ \"title\": \"$TITLE\", \"description\": \"$DESCRIPTION\", \"timestamp\": \"$DATE\", \"url\": \"$URL\" }]}" \
+            "${{ secrets.DISCORD_WEBHOOK }}"
+
+      - name: 🚨 Send Deployment Message on Failure
         if: ${{ failure() }}
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚨 Deployment failed for commit ${{ github.sha }}!"
