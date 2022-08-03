@@ -14,5 +14,5 @@ jobs:
         run: |
           curl \
             -H "Content-Type: application/json" \
-            -d '{ "embeds": [{ "title": "Hello!", "description": "Hi! :grinning:" }]}' \
+            -d '{ "embeds": [{ "title": "🚀 Deployment Successful", "description": "${{ github.event.head_commit.message }}" }]}' \
             "${{ secrets.DISCORD_WEBHOOK }}"
