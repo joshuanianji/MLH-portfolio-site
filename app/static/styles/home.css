@@ -1,0 +1,9 @@
+.content-title {
+    --primary-color: #fc2847;
+    --secondary-color: #ffa343;
+}
+
+p {
+    text-align: center;
+    font-style: italic;
+}

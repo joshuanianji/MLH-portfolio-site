@@ -15,21 +15,23 @@
  * @param {string?} prefix
  * @returns
  */
-const animateCSS = (element, animation, prefix = "animate__") =>
-  // We create a Promise and return it
-  new Promise((resolve, reject) => {
-    const animationName = `${prefix}${animation}`;
-    const node = document.querySelector(element);
+const animateCSS = (element, animation, prefix = 'animate__') =>
+    // We create a Promise and return it
+    new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`;
+        const node = document.querySelector(element);
 
-    node.classList.add(`${prefix}animated`, animationName);
-    node.style.setProperty("--animate-duration", "0.5s");
+        node.classList.add(`${prefix}animated`, animationName);
+        node.style.setProperty('--animate-duration', '0.5s');
 
-    // When the animation ends, we clean the classes and resolve the Promise
-    function handleAnimationEnd(event) {
-      event.stopPropagation();
-      node.classList.remove(`${prefix}animated`, animationName);
-      resolve("Animation ended");
-    }
+        // When the animation ends, we clean the classes and resolve the Promise
+        function handleAnimationEnd(event) {
+            event.stopPropagation();
+            node.classList.remove(`${prefix}animated`, animationName);
+            resolve('Animation ended');
+        }
 
-    node.addEventListener("animationend", handleAnimationEnd, { once: true });
-  });
+        node.addEventListener('animationend', handleAnimationEnd, {
+            once: true,
+        });
+    });

@@ -1,25 +1,19 @@
 <!DOCTYPE html> {% extends 'base.html' %}
-<!-- Imports --> {% block imports %}
-<link lang="css" rel="stylesheet" href="./static/styles/work-experience.css" /> {% endblock %}
-<!-- Add content here --> {% block content %}
-<script type="text/javascript">
-    function randomColors() {
-        document.write("<div style='color:#" + Math.floor(Math.random() * 4096).toString(16) + ";font-size: " + 24 + "px;'>");
-
-    }
-</script>
-<div>
-    <h3 class="content-title-work">Work Experience</h3> 
+<!-- Imports -->
+{% block imports %}
+<link lang="css" rel="stylesheet" href="./static/styles/work-experience.css" />
+{% endblock %}
+<!-- Add content here -->
+{% block content %}
+<h3 class="content-title">Work Experience</h3>
+<ul class="job-wrapper">
     {% for job in jobs %}
-    <div class="job-item">
-        <script>randomColors()</script>
-        <h1> Job Title: {{job.name}} </h1>
-        <p> Location : {{job.location}}</p>
-        <p> Phone : {{job.contact}}</p>
-        <p> {{job.description}}</p>
-    </div>
-    __________________________________________________________________________________________________________________________________________
-    {% endfor %} 
-</div> 
-
+    <li class="job-item">
+        <div class="location">{{ job.location }}</div>
+        <h4 class="title">{{ job.name }}</h4>
+        <p class="phone">{{ job.contact }}</p>
+        <p class="description">{{ job.description }}</p>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}

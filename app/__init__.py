@@ -53,43 +53,28 @@ base_content = {
 
 
 @app.route('/')
-def index():
-    # no extra content needed
-    # title and active_tab handled by `handle_route`
-    return handle_route('Home', 'index', base_content)
-
-
-@app.route('/about')
-def about():
+def home():
     content = {
         **base_content,
         'quote': 'A platypus? PERRY THE PLATYPUS?',
         'author': 'Dr. Heinz Doofenshmirtz',
     }
-    return handle_route('About', 'about', content)
+    return handle_route('Home', 'home', content)
 
 
 @app.route('/work')
 def work():
     content = {
         **base_content, 'jobs': [{
-            'name':
-            'Theoretical physicist',
-            'location':
-            'Mars',
-            'contact':
-            '1 (202) 358-0001',
-            'description':
-            'They wanted someone with a degree in theoretical physics and I said I have a theoretical physic degree and they let me in.'
+            'name': 'Theoretical physicist',
+            'location': 'Mars',
+            'contact': '1 (202) 358-0001',
+            'description': 'They wanted someone with a degree in theoretical physics and I said I have a theoretical physic degree and they let me in.'
         }, {
-            'name':
-            'Computer programmer',
-            'location':
-            'Memory Lane',
-            'contact':
-            '127.255.255.255',
-            'description':
-            'Today I walked down a street where many computer programmers live. The houses were numbered 64k, 128k, 256k, 512k and 1MB. For some reason it felt like a trip down memory lane.'
+            'name': 'Computer programmer',
+            'location': 'Memory Lane',
+            'contact': '127.255.255.255',
+            'description': 'Today I walked down a street where many computer programmers live. The houses were numbered 64k, 128k, 256k, 512k and 1MB. For some reason it felt like a trip down memory lane.'
         }]
     }
     return handle_route('Work Experiences', 'work', content)
@@ -220,6 +205,9 @@ def handle_route(name: str, id: str, content):
     print('animations:', animations)
     # check prev_page cookie to see what animations we have to do
     prev_page = request.cookies.get('prev_page', None, type=str)
+    if prev_page == 'about':
+        # change cookie to home
+        prev_page = 'home'
     print(f'prev_page for {id}: {prev_page}')
 
     if animations == 'false':
@@ -250,16 +238,14 @@ def handle_route(name: str, id: str, content):
 # either a `animate__slideInLeft` or `animate__slideInRight`
 def get_animation(prev_page: str, curr_page: str) -> str:
     pages = {
-        'index': 0,
-        'about': 1,
+        'home': 1,
         'work': 2,
         'education': 3,
         'hobbies': 4,
         'where_am_i': 5,
         'timeline': 6
     }
-    anim = 'slideInRight' if pages[prev_page] < pages[
-        curr_page] else 'slideInLeft'
+    anim = 'slideInRight' if pages[prev_page] < pages[curr_page] else 'slideInLeft'
     return f'animate__{anim}'
 
 
@@ -307,7 +293,7 @@ def delete_timeline_post(id):
     return 'Success!'
 
 
-if __name__ == '__main__':
+if os.getenv("TESTING") != "true":
     mydb.connect()
     mydb.create_tables([TimelinePost])
     app.run()

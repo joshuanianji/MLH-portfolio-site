@@ -3,55 +3,55 @@
 <!-- Imports -->
 {% block imports %}
 <link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-  crossorigin=""
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""
 />
 <script
-  src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-  crossorigin=""
+    src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""
 ></script>
 <link lang="css" rel="stylesheet" href="./static/styles/where-am-i.css" />
 
 {# since we need to use template vars, we cannot make a new JS file and import
 it #}
 <script type="text/javascript">
-  window.addEventListener("load", function () {
-    // set up the map to point to North America (zoomed out a bit)
-    const map = L.map("map").setView([53, -113], 3);
+    window.addEventListener("load", function () {
+      // set up the map to point to North America (zoomed out a bit)
+      const map = L.map("map").setView([53, -113], 3);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: "© OpenStreetMap",
-    }).addTo(map);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "© OpenStreetMap",
+      }).addTo(map);
 
-    const data = {{ places | tojson }};
-    for (const place of data) {
-        const marker = L.marker([place.coords[0], place.coords[1]]).addTo(map);
-        marker.bindPopup(`<b>${place.name}</b><br/>${place.description}`);
-    }
-  });
+      const data = {{ places | tojson }};
+      for (const place of data) {
+          const marker = L.marker([place.coords[0], place.coords[1]]).addTo(map);
+          marker.bindPopup(`<b>${place.name}</b><br/>${place.description}`);
+      }
+    });
 </script>
 {% endblock %}
 
 <!-- Add content here -->
 {% block content %}
 <div class="box">
-  <h3 class="content-header-title">Where Am I?</h3>
-  <p>
-    83 Marina Green Dr <br />
-    San Francisco, California, 94123 <br />
-    United States
-  </p>
-  <h4 class="subheading">Where did I go?</h4>
-  <ul>
-    <li>Edmonton, Canada</li>
-    <li>Seattle, USA</li>
-    <li>San Juan, Puerto Rico</li>
-  </ul>
-  <div id="map"></div>
+    <h3 class="content-title">Where Am I?</h3>
+    <p>
+        83 Marina Green Dr <br />
+        San Francisco, California, 94123 <br />
+        United States
+    </p>
+    <h4 class="subheading">Where did I go?</h4>
+    <ul>
+        <li>Edmonton, Canada</li>
+        <li>Seattle, USA</li>
+        <li>San Juan, Puerto Rico</li>
+    </ul>
+    <div id="map"></div>
 </div>
 
 {% endblock %}

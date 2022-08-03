@@ -3,61 +3,61 @@ profile-specific styles
 */
 
 .profile {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 2em;
-  margin-top: 4em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 4em;
 }
 
 .profile-picture {
-  width: 9em;
-  height: 9em;
+    width: 9em;
+    height: 9em;
 
-  border-radius: 50%;
-  border: 2px solid #f7d039;
-  padding: 6px;
+    border-radius: 50%;
+    border: 2px solid #f7d039;
+    padding: 6px;
 }
 
 .profile-picture > img {
-  width: 100%;
-  border-radius: 50%;
+    width: 100%;
+    border-radius: 50%;
 }
 
 .profile-description {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 .profile-description > .profile-name {
-  font-size: 2em;
-  margin-left: 1em;
-  color: #3d3d3d;
-  margin: 0;
+    font-size: 2em;
+    margin-left: 1em;
+    color: #3d3d3d;
+    margin: 0;
 }
 
 .profile-description > .profile-position {
-  font-size: 1em;
-  color: #575757;
-  margin: 0;
-  text-align: left;
-  font-style: italic;
+    font-size: 1em;
+    color: #575757;
+    margin: 0;
+    text-align: left;
+    font-style: italic;
 }
 
 .profile-description > .socials {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-  padding: 0.5em 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    padding: 0.5em 0;
 }
 .profile-description > .socials > a.socials-link {
-  width: 1.75em;
-  height: 1.75em;
+    width: 1.75em;
+    height: 1.75em;
 }
 .profile-description > .socials > a.socials-link > img {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
