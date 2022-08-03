@@ -1,0 +1,27 @@
+name: Webhook Test
+
+on:
+  push:
+    branches:
+      - better-webhooks
+
+jobs:
+  deploy:
+    name: 'Webhook'
+    runs-on: ubuntu-latest
+    steps:
+      # https://stackoverflow.com/a/64649397
+      - name: Dynamically set $DATE
+        run: echo "DATE=$(date +'%Y-%m-%dT%H:%M:%S.000Z')" >> $GITHUB_ENV
+
+      - name: Send webhook
+        env:
+          TITLE: '🚀 Deployment Successful!'
+          DESCRIPTION: '**Commit Description:** ${{ github.event.head_commit.message }}\n\n**Commit Hash:** ${{ github.sha }}'
+          URL: 'https://github.com/joshuanianji/MLH-portfolio-site/commit/${{ github.sha }}'
+        # The backslashes around double quotes are annoying but if I use single quotes, discord will say the JSON is invalid for some reason
+        run: |
+          curl \
+            -H "Content-Type: application/json" \
+            -d "{ \"embeds\": [{ \"title\": \"$TITLE\", \"description\": \"$DESCRIPTION\", \"timestamp\": \"$DATE\", \"url\": \"$URL\" }]}" \
+            "${{ secrets.DISCORD_WEBHOOK }}"
