@@ -3,13 +3,21 @@ name: Deploy
 on:
   push:
     branches:
-      - main 
+      - main
   workflow_dispatch:
 
 jobs:
-  deploy:
-    name: "Deploy to Droplet"
+  test:
+    name: Test
     runs-on: ubuntu-latest
+    steps:
+      - name: 🧪 Test our application
+        uses: ./.github/actions/test
+
+  deploy:
+    name: 'Deploy to Droplet'
+    runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Configure SSH
         run: |
@@ -29,10 +37,10 @@ jobs:
           SSH_IP: ${{ secrets.SSH_IP }}
       - name: Deploy site
         run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && ./redeploy-site.sh'
-      
+
       - name: Send Deployment Message on Success
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful!"
-      
+
       - name: Send Deployment Message on Failure
         if: ${{ failure() }}
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚨 Deployment failed!!"

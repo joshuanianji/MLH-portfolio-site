@@ -1,38 +1,18 @@
 name: Run Tests
 
-on: 
-  push: 
-    branches:
-      - main
+on:
   pull_request:
     branches:
       - main
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
-    name: Run Tests
-    env: 
-      TESTING: true
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-      
-        # Since I don't care about security, my environment files can be the default values in example.env
-      - name: Copy environments
-        run: cp example.env .env
-      
-      - name: Setup Python 
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9.12'
-      
-      - name: Setup python venv
-        run: python -m venv python3-virtualenv
-      
-      - name: Install Deps
-        run: python3-virtualenv/bin/pip install -r requirements.txt
+      - name: 🏁 Checkout repo
+        uses: actions/checkout@v3
 
-        # My tests are using docker so I can skip setting up Python
-      - name: Run Tests
-        run: ./run_test.sh python3-virtualenv/bin/python
+      - name: 🧪 Test our application
+        # Directory name only
+        uses: ./.github/actions/test

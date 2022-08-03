@@ -1,0 +1,29 @@
+name: 'Test'
+description: 'Test our application'
+
+runs:
+  using: composite
+  env:
+    TESTING: true
+  steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+
+      # Since I don't care about security, my environment files can be the default values in example.env
+    - name: Copy environments
+      run: cp example.env .env
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9.12'
+
+    - name: Setup python venv
+      run: python -m venv python3-virtualenv
+
+    - name: Install Deps
+      run: python3-virtualenv/bin/pip install -r requirements.txt
+
+      # My tests are using docker so I can skip setting up Python
+    - name: Run Tests
+      run: ./run_test.sh python3-virtualenv/bin/python
