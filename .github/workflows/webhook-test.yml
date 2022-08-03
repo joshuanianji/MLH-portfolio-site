@@ -12,18 +12,14 @@ jobs:
     steps:
       # https://stackoverflow.com/a/64649397
     - name: Dynamically set $DATE
-      run: echo "DATE=2020-10-07T12:00:00+01:00" >> $GITHUB_ENV
+      run: echo "DATE=$(date +'%Y-%m-%dT%H:%M:%S.000Z')" >> $GITHUB_ENV
 
       - name: Send webhook
         env:
-          TITLE: '🚀 Deployment Successful!'
-          DESCRIPTION: '${{ github.event.head_commit.message }}'
-          IMG: '{ "url": "https://cataas.com/cat" }'
-          # formatted based on https://birdie0.github.io/discord-webhooks-guide/structure/embed/timestamp.html
-          # milliseconds are set to 0
-          TIMESTAMP: date +'%Y-%m-%dT%H:%M:%S.000Z'
+          TITLE: "🚀 Deployment Successful!"
+          DESCRIPTION: "${{ github.event.head_commit.message }}"
         run: |
           curl \
             -H "Content-Type: application/json" \
-            -d '{ "embeds": [{ "title": "${{ env.TITLE }}", "description": "${{ env.DESCRIPTION }}" }]}' \
+            -d "{ \"embeds\": [{ \"title\": \"$TITLE\", \"description\": \"$DESCRIPTION\", \"timestamp\": \"$DATE\" }]}" \
             "${{ secrets.DISCORD_WEBHOOK }}"
