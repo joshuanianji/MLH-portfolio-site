@@ -39,8 +39,8 @@ jobs:
         run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && ./redeploy-site.sh'
 
       - name: Send Deployment Message on Success
-        run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful!"
+        run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful for commit ${{ github.sha }}!"
 
       - name: Send Deployment Message on Failure
         if: ${{ failure() }}
-        run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚨 Deployment failed!!"
+        run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚨 Deployment failed for commit ${{ github.sha }}!"
