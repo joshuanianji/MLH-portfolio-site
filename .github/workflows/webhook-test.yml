@@ -21,5 +21,5 @@ jobs:
         run: |
           curl \
             -H "Content-Type: application/json" \
-            -d '{ "embeds": [{ "title": "${TITLE}", "description": "${DESCRIPTION}", "image": "${IMG}", "footer": "${FOOTER}" }]}' \
+            -d '{ "embeds": [{ "title": "${TITLE}", "description": "${DESCRIPTION}", "image": "${IMG}", "timestamp": "${TIMESTAMP}" }]}' \
             "${{ secrets.DISCORD_WEBHOOK }}"
