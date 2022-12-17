@@ -5,7 +5,6 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    restart: always 
     env_file: 
       - example.env 
     environment:
@@ -20,7 +19,6 @@ services:
   mysql:
     container_name: mysql 
     image: mariadb 
-    restart: always
     env_file:
       - example.env 
     volumes: 
